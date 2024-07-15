@@ -1,0 +1,91 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("../fonts/Raleway (1)/Raleway-VariableFont_wght.ttf");
+}
+.raleway {
+  font-family: "Raleway", sans-serif;
+}
+:root {
+  // THEME LIGHT
+  // COLOR BG (theme light)
+  --color-bg-base: #717171;
+  --color-bg-primary: #eaeaea;
+  --color-bg-secondary: #ffffff;
+  --color-bg-terciary: #fafafa;
+  --color-bg-quaternary: #2f6be0;
+  --color-bg-quinary: #e6e6e6;
+  --color-bg-white: #ffffff;
+  // COLOR TEXT (theme light)
+  --color-text-primary: #01c38e;
+  --color-text-secondary: #ffffff;
+  --color-text-terciary: #2f6be0;
+  --color-text-quaternary: #ffbb11;
+  --color-text-quintenary: #6d6d6d;
+  --color-text-white: #ffffff;
+  // COLOR SHADOW (theme light)
+  --color-shadow-primary: #ffbb11;
+}
+:root .dark-mode {
+  // COLOR BG (theme dark)
+  --color-bg-primary: #121f2f;
+  --color-bg-secondary: #2b324e;
+  --color-bg-terciary: #666f98;
+  --color-bg-quaternary: #01c38e;
+  // COLOR TEXT (theme dark)
+  // --color-text-primary:;
+  --color-text-secondary: #ffffff;
+  --color-text-terciary: #01c38e;
+  --color-text-quaternary: #01c38e;
+  --color-text-quintenary: #E9E9E9;
+  --color-text-white: #ffffff;
+  // COLOR SHADOW (theme dark)
+  --color-shadow-primary: #a4a4a4;
+}
+
+.color-bg-base {
+  background-color: var(--color-bg-base);
+}
+.color-bg-primary {
+  background-color: var(--color-bg-primary);
+}
+.color-bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+.color-bg-terciary {
+  background-color: var(--color-bg-terciary);
+}
+.color-bg-quaternary {
+  background-color: var(--color-bg-quaternary);
+}
+.color-text-primary {
+  color: var(--color-text-primary);
+}
+.color-text-secondary {
+  color: var(--color-text-secondary);
+}
+.color-text-terciary {
+  color: var(--color-text-terciary);
+}
+.color-text-quaternary {
+  color: var(--color-text-quaternary);
+}
+.color-text-quintenary {
+  color: var(--color-text-quintenary);
+}
+.color-text-white {
+  color: var(--color-text-white);
+}
+.color-shadow-primary {
+  border: 2px solid var(--color-shadow-primary);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// container will define the max width
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

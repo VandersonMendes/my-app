@@ -1,0 +1,29 @@
+<header class="container ">
+  <div class="flex justify-around py-6 items-center flexContainer">
+    <div>
+      <h1 class="text-3xl font-semibold tracking-wider logoHeader ">
+        <a href="/">
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">Hrco</span>
+          <span class="color-text-quaternary">nne</span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">ct</span>
+        </a>
+      </h1>
+    </div>
+    <div class="flex items-start gap-4">
+      <nav class="flex items-end color-text-quintenary navLinks">
+        <a href="/entrar" class="pr-1">Entrar</a>
+          <p>/</p>
+        <a href="/inscrever" class="pl-1">Criar</a>
+      </nav>
+      <img src="./../../../../assets/imgs/user-icon/user_login_ligth.svg" alt="icone de usuario não criado - light Mode"
+        class="w-5 iconUser" *ngIf="!isToggleChangeTheme; else dark">
+        <ng-template #dark>
+          <a href="">
+            <img src="./../../../../assets/imgs/user-icon/user_login_dark.svg" alt="icone de usuario não criado - light dark"
+            class="w-5 iconUser">
+          </a>
+        </ng-template>
+      
+    </div>
+  </div>
+</header>
