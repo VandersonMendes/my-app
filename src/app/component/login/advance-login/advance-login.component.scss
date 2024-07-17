@@ -32,6 +32,14 @@ input:-webkit-autofill:active{
   opacity: 1.1;
   transform: scale3d(1.03, 1.03, 1.03) rotate(0.3deg);
 }
+  .linkHover {
+    transition: transform 0.3s ease-in-out; 
+  }
+
+  .linkHover:hover {
+    transform: scale3d(1.03, 1.03, 1.03) rotate(0.3deg);
+        transition: transform 0.3s ease-in; 
+  }
 // MEDIA QUERY
 @media (max-width: 900px){
   .imgFlex{
@@ -57,7 +65,18 @@ input:-webkit-autofill:active{
   .titleText{
     gap: 1rem;
   }
+   .iconTheme {
+    width: 1.2rem;
+  }
 }
+  @media (max-width:600px){
+    form{
+      input{
+        padding: 7px 10px;
+      }
+    }
+    
+  }
 @media  (max-width: 350px){
   .inputForm, .buttonAdvance{
     width: 90%;

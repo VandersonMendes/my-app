@@ -1,30 +1,31 @@
 <section class="animated animate__animated animate__fadeIn raleway color-bg-primary  min-h-screen containerLogin">
   <app-header></app-header>
   <main [ngClass]="{ 'animate__animated animate__fadeIn': isToggleChangeTheme }" class="container">
-    <div class="flex justify-around items-center gap-6 mx-8 max-lg:mx-12 max-[400px]:mx-0 containerLogin">
-      <!-- Form -->
+    <div class="flex justify-around items-center gap-6 my-16 mx-8 max-lg:mx-12 max-[400px]:mx-0 containerLogin">
+
       <div>
-        <div class=" flex items-center titleText">
-          <div class="relative l-20">
-            <button class=" p-1 rounded-full" (click)="isClickChangeTheme()"
-              *ngIf="isToggleChangeTheme; else light">
-              <img class="w-6" src="../../../assets/imgs/theme_mode_icon/dark theme icon/moon.svg"
-                alt="Icon theme dark">
-            </button>
-            <ng-template #light>
-              <button class="p-1 rounded-full" (click)="isClickChangeTheme()">
-                <img class="w-6" src="../../../assets/imgs/theme_mode_icon/dark theme icon/sun.svg"
-                  alt="Icon theme ligth">
-              </button></ng-template>
-          </div>
-          <h1 class="font-semibold max-lg:text-5xl max-md:text-4xl text-6xl my-16 m-auto"><span class="color-text-terciary"
+            <div class=" flex flex-col">
+              <div class="relative l-20">
+                <button class=" p-1 rounded-full" (click)="isClickChangeTheme()"
+                  *ngIf="isToggleChangeTheme; else light">
+                  <img class="w-6 iconTheme" src="../../../assets/imgs/theme_mode_icon/dark theme icon/moon.svg"
+                    alt="Icon theme dark">
+                </button>
+                <ng-template #light>
+                  <button class="p-1 rounded-full" (click)="isClickChangeTheme()">
+                    <img class="w-6 iconTheme" src="../../../assets/imgs/theme_mode_icon/dark theme icon/sun.svg"
+                      alt="Icon theme ligth">
+                  </button></ng-template>
+              </div>
+                <h1 class="font-semibold max-lg:text-5xl max-md:text-4xl text-6xl my-10 m-auto"><span class="color-text-terciary"
               [ngClass]="{ 'color-text-white': isToggleChangeTheme }">Q</span><span
               class="color-text-quaternary">uas</span><span class="color-text-terciary"
               [ngClass]="{ 'color-text-white': isToggleChangeTheme }">e</span> <span class="color-text-terciary"
               [ngClass]="{ 'color-text-white': isToggleChangeTheme }"> lá</span><span
               class="color-text-quaternary"> !</span>
               </h1>
-        </div>
+            </div>
+         
 
         <form class="flex flex-col w-96 max-lg:w-80 containerForm" (ngSubmit)="onSubmit($event)">
           <label for="CNPJ" class="my-1 color-text-terciary font-bold ml-1 cursor-pointer max-sm:text-sm">CNPJ</label>
@@ -39,7 +40,7 @@
             <p *ngIf="errorForm" class="text-center text-red-600 font-bold animated animate__animated animate__fadeIn">{{errorMessage}}</p>
           <button
             class="buttonAdvance color-bg-quaternary p-2 max:md:p-1 mb-8 rounded-md text-2xl max-md:text-xl font-bold color-text-white border-2 mt-5">Avançar</button>
-          <a href="" class="flex justify-center font-extrabold color-text-terciary contCreate max-md:text-xs" >JÁ TEM
+          <a href="/entrar" class="flex justify-center font-extrabold color-text-terciary contCreate max-md:text-xs" >JÁ TEM
             UMA CONTA</a>
         </form>
       </div>

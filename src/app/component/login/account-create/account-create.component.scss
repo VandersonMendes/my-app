@@ -1,70 +1,80 @@
-.inputForm{
+.inputForm {
   outline: none;
-  border: 1px solid #D3D3D3;
+  border: 1px solid #d3d3d3;
   background-color: transparent;
 }
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
-    box-shadow: inset 0 0 20px 20px #23232329;
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
 }
-.inputForm::placeholder{
+.inputForm::placeholder {
   color: var(--color-text-quintenary);
 }
-.inputForm:focus{
-    transition: border 0.2s ease-in-out;
+.inputForm:focus {
+  transition: border 0.2s ease-in-out;
   border: 2px solid #a0a0a0;
 }
 .inputForm:-webkit-autofill-highlight {
   color: #000; /* Cor do texto */
   background-color: #fff; /* Cor de fundo */
 }
-.buttonAdvance{
-    transition: transform 0.2s ease-in-out;
-    opacity: 0.9;
+.buttonAdvance {
+  transition: transform 0.2s ease-in-out;
+  opacity: 0.9;
 }
-.buttonAdvance:hover{
+.buttonAdvance:hover {
   opacity: 1.1;
   transform: scale3d(1.03, 1.03, 1.03) rotate(0.3deg);
 }
-// MEDIA QUERY
-@media (max-width: 900px){
-  .imgFlex{
-    display: none;
-  }
-  
+.linkHover {
+  transition: transform 0.3s ease-in-out;
 }
-@media  (max-width: 400px){
-  .inputForm, .buttonAdvance{
+
+.linkHover:hover {
+  transform: scale3d(1.03, 1.03, 1.03) rotate(0.3deg);
+  transition: transform 0.3s ease-in;
+}
+
+@media (max-width: 600px) {
+  form {
+    input {
+      padding: 7px 10px;
+    }
+  }
+}
+@media (max-width: 400px) {
+  .inputForm,
+  .buttonAdvance {
     width: 100%;
   }
-  .buttonAdvance{
+  .buttonAdvance {
     font-size: 15px;
     padding: 4px;
   }
-  .containerLogin{
+  .containerLogin {
     margin: 0 2rem;
     gap: 0;
   }
-  .containerForm{
+  .containerForm {
     width: 16rem;
   }
-  .titleText{
+  .titleText {
     gap: 1rem;
   }
 }
-@media  (max-width: 350px){
-  .inputForm, .buttonAdvance{
+@media (max-width: 350px) {
+  .inputForm,
+  .buttonAdvance {
     width: 90%;
   }
-  .containerLogin{
+  .containerLogin {
     margin: 0rem 1rem;
     gap: 0;
   }
-
 }

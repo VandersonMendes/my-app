@@ -89,3 +89,20 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+::-webkit-scrollbar {
+  width: 10px;               /* Largura da barra de rolagem vertical */
+  height: 12px;              /* Altura da barra de rolagem horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3e1;       /* Cor do fundo da trilha da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-quinary);          /* Cor da parte deslizante da barra de rolagem */
+  border-radius: 6px;        /* Borda arredondada para a parte deslizante */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;          /* Cor da parte deslizante ao passar o mouse */
+}

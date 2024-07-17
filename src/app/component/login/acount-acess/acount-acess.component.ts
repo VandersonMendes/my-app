@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-acount-acess',
@@ -20,7 +21,7 @@ export class AcountAcessComponent {
   errorMessage: string = '';
   toggleButtonVisiblePassword: boolean = false;
   srcIconCheckboxPassword: string = ''
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router) {
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private apiService: ApiService) {
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       this.isToggleChangeTheme = true
@@ -38,17 +39,16 @@ export class AcountAcessComponent {
 
   }
   isToggleChangeTheme: boolean = false;
-  isClickChangeTheme() {
+  isClickChangeTheme(): void {
     this.isToggleChangeTheme = !this.isToggleChangeTheme
     this.themeService.toggleDarkMode(!this.themeService.isDarkMode.value)
   }
-  OnChangeCheckBox(event: Event){
+  OnChangeCheckBox(event: Event): void{
     event.preventDefault();
     this.toggleButtonVisiblePassword = !this.toggleButtonVisiblePassword;
   
   }
-  onSubmit(event: Event) {
-    
+  onSubmit(event: Event): void {
     event.preventDefault();
     const regexEmailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     console.log(regexEmailValidation.test(this.email))
@@ -66,17 +66,14 @@ export class AcountAcessComponent {
     if (!this.errorForm) {
       const dateLogin = {
         email: this.email,
-        company: this.senha
+        password: this.senha
       }
-      // this.context.saveDateLogin(dateLogin)
-      this.router.navigate(['login/advance'])
-      this.context.advanceLogin = true;
-      return
+      this.apiService.login(dateLogin.email, dateLogin.password).then(data => {
+        data.subscribe((data: any) => {
+          localStorage.setItem('token', JSON.stringify(data));
+        })
+      })
     }
-
   }
 
-  onChangeForm(event: Event) {
-
-  }
 }

@@ -4,9 +4,9 @@
     [ngClass]="
   isToggleChangeTheme ? 'animated animate__animated animate__bounceIn' : 'animated animate__animated animate__fadeInDown'"
     class="container">
-    <div class="flex justify-around items-center gap-6  mx-8 max-lg:mx-12 max-[400px]:mx-0 ">
+    <div class="flex justify-around items-center gap-6 my-16 mx-8 max-lg:mx-12 max-[400px]:mx-0 ">
       <div>
-        <div class="mt-16 mb-4">
+        <div class="">
           <button class=" p-1 rounded-full" (click)="isClickChangeTheme()" *ngIf="isToggleChangeTheme; else light">
             <img class="w-6" src="../../../assets/imgs/theme_mode_icon/dark theme icon/moon.svg" alt="Icon theme dark">
           </button>
@@ -17,7 +17,7 @@
             </button></ng-template>
         </div>
         <div class=" flex items-center">
-          <h1 class="font-semibold max-lg:text-5xl max-sm:text-4xl text-6xl mb-16 m-auto ">
+          <h1 class="font-semibold max-lg:text-5xl max-sm:text-4xl text-6xl my-10 m-auto ">
             <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">Ins</span>
             <span class="color-text-quaternary">cr</span>
             <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">eva</span>
@@ -46,7 +46,7 @@
           <button
             class="buttonAdvance color-bg-quaternary p-2 max:md:p-1 mb-8 rounded-md text-2xl max-md:text-xl font-bold color-text-white border-2 mt-5">Avançar</button>
           <a href="/entrar"
-            class=" flex justify-center font-extrabold color-text-terciary contCreate max-md:text-xs ">JÁ TEM
+            class=" text-center font-extrabold color-text-terciary contCreate max-md:text-xs linkHover">JÁ TEM
             UMA CONTA</a>
         </form>
       </div>
