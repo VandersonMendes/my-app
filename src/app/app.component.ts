@@ -7,7 +7,7 @@ import { ThemeService } from './services/theme.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'my-app';
+  title = 'd';
   constructor(private themeService: ThemeService){}
   ngOnInit(): void {
     this.themeService.isDarkMode$.subscribe(( isDark: any) =>{
