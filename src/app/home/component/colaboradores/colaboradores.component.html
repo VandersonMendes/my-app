@@ -1,0 +1,62 @@
+<section class="containerColaboradores relative">
+    <div class="flex gap-5 my-12 mx-7 max-md:gap-2">
+        <img src="../../../../assets/imgs/homeIcon/arrow.svg" alt="ICON SETA" class="w-6 max-md:w-4"
+            *ngIf="!isToggleChangeTheme; else ligthIcon">
+        <ng-template #ligthIcon>
+            <img src="../../../../assets/imgs/homeIcon/arrowDark.svg" alt="ICON SETA" class="w-6  max-md:w-4">
+        </ng-template>
+        <div class="flex justify-between items-center w-full">
+            <p class="text-2xl color-text-terciary font-bold max-md:text-xl">Colaboradores</p>
+            <button id="menu-button"
+                class="inline-flex items-center justify-center p-2 rounded-md text-gray-40 transition duration-150 ease-in-out"
+                (click)="clickMenuSidebar()">
+                <div class="menu-icon" [ngClass]="{ 'open': menuHamburger}">
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="shadow-md rounded-lg m-5 overflow-x-auto custom-scroll">
+        <table class="bg-white rounded-lg shadow-lg containerColaboradores w-full table-auto scrollTable transition-transform duration-500 ease-in-out">
+            <thead class="bg-gradient-to-r from-green-400 to-green-600 text-white">
+                <tr>
+                    <th class="px-6 py-3 text-center text-base font-medium uppercase tracking-wider">Nome</th>
+                    <th class="px-6 py-3 text-center text-base font-medium uppercase tracking-wider">Posição</th>
+                    <th class="px-6 py-3 text-center text-base font-medium uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-3 text-center text-base font-medium uppercase tracking-wider">CPF</th>
+                    <th class="px-6 py-3 text-center text-base font-medium uppercase tracking-wider">Action</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <tr class="hover:bg-gray-50 transition duration-200">
+                    <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-hidden text-ellipsis">
+                        <div class="text-sm font-medium text-gray-900 truncate">Jane</div>
+                        <div class="text-sm text-gray-500 truncate text-center align-middle">jane.cooper.comddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</div>
+                    </td>
+                    <td class="px-6 py-4 text-center align-middle whitespace-nowrap max-w-xs overflow-hidden text-ellipsis">
+                        <div class="text-sm text-gray-900 truncate">Region</div>
+                    </td>
+                    <td class="px-6 py-4 text-center align-middle">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                    </td>
+                    <td class="px-6 py-4 text-center align-middle whitespace-nowrap max-w-xs overflow-hidden text-ellipsis">Adminddddddddddddddddddddddddddddddddddddddddddddd</td>
+                    <td class="px-6 py-4 text-center align-middle">
+                        <button href="#" class="text-indigo-600 hover:text-indigo-900">Edit</button>
+                    </td>
+                </tr>
+                <!-- Repetir para mais linhas -->
+            </tbody>
+        </table>
+        <button class="absolute right-0 -bottom-32" (click)="isToggleModalAddCollaboratores()">
+        <img src="../../../../assets/imgs/homeIcon/adicionar_ligth.svg" alt="Icon adicionar Ligth"
+          class="w-12 max-sm:w-10" *ngIf="!isToggleChangeTheme; else iconGrenn">
+        <ng-template #iconGrenn>
+          <img src="../../../../assets/imgs/homeIcon/adicionar_green_dark.svg" alt="Icon adicionar Dark"
+            class="w-12 max-sm:w-10"></ng-template>
+
+      </button>
+    </div>
+</section>

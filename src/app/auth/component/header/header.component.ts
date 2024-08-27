@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from '../../../services/theme/theme.service';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-header',
@@ -14,8 +14,6 @@ export class HeaderComponent implements OnInit{
        this.isToggleChangeTheme = isDark
         console.log(this.isToggleChangeTheme)
      })
-
-    
   }
   ngOnInit(): void {
 

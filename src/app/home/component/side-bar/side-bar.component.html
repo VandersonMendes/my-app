@@ -1,0 +1,119 @@
+<section class="flex items-center min-h-screen fixed sideBar" [ngClass]="{ 'open': sideBarMobile}">
+  <nav class=" max-w-44 max w-full ml-4 relative">
+
+    <ul
+      class="flex flex-col items-center gap-7 animated animate__animated animate__fadeIn containerSideBarResponsiveLigth "
+      *ngIf="!isToggleChangeTheme; else DarkIcon">
+      <li>
+        <button (click)="closeMenu()">
+          <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+      </li>
+      <li>
+        <button>
+          <a href="" class="flexResponsiveButton">
+            <img src="../../../../assets/imgs/sideBar/colaboradores.svg" alt="Icon colaboradores"
+              class="w-6 cursor-pointer">
+          </a>
+        </button>
+      </li>
+      <li>
+        <button>
+          <a href="/painel" class="flexResponsiveButton">
+            <img src="../../../../assets/imgs/sideBar/home.svg" alt="Icon Painel" class="w-6 cursor-pointer">
+
+          </a>
+        </button>
+      </li>
+      <li>
+        <a href=""><img src="../../../../assets/imgs/sideBar/config.svg" alt="Icon config" class="w-6 cursor-pointer">
+        </a>
+      </li>
+      <li>
+        <button>
+          <a href="">
+            <img src="../../../../assets/imgs/sideBar/duvidas.svg" alt="Icon duvidas" class="w-6 cursor-pointer">
+          </a>
+        </button>
+      </li>
+      <div class="mt-7 flex flex-col gap-7">
+        <li class="">
+          <button class="rounded-full" (click)="isClickChangeTheme()">
+            <img class="w-6 iconTheme" src="../../../assets/imgs/theme_mode_icon/dark theme icon/sun.svg"
+              alt="Icon theme dark">
+          </button>
+        </li>
+
+        <li class="">
+          <button (click)="logOutService.logOut()">
+            <img src="../../../../assets/imgs/sideBar/exit.svg" alt="Icon Exit" class="w-6 cursor-pointer">
+          </button>
+        </li>
+      </div>
+    </ul>
+    <ng-template #DarkIcon>
+      <ul class="flex flex-col items-center gap-7 containerSideBarResponsiveDark">
+        <li>
+          <button (click)="closeMenu()">
+            <div class="menu-icon">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="/colaboradores">
+              <img src="../../../../assets/imgs/sideBar/colaboradoresDark.svg" alt="Icon colaboradores Dark"
+                class="w-6 cursor-pointer">
+            </a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="/painel">
+              <img src="../../../../assets/imgs/sideBar/homeDark.svg" alt="Icon Home Dark" class="w-6 cursor-pointer">
+            </a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href=""><img src="../../../../assets/imgs/sideBar/configDark.svg" alt="Icon config Dark"
+                class="w-6 cursor-pointer">
+            </a>
+          </button>
+        </li>
+        <li>
+          <button>
+            <a href="">
+              <img src="../../../../assets/imgs/sideBar/duvidasDark.svg" alt="Icon duvidas Dark"
+                class="w-6 cursor-pointer">
+            </a>
+          </button>
+        </li>
+        <div class="mt-7 flex flex-col gap-7">
+
+          <li class="">
+            <button class=" rounded-full" (click)="isClickChangeTheme()">
+              <img class="w-5 iconTheme" src="../../../assets/imgs/theme_mode_icon/dark theme icon/moon.svg"
+                alt="Icon theme dark">
+            </button>
+          </li>
+          <li class="">
+            <button (click)="logOutService.logOut()">
+              <img src="../../../../assets/imgs/homeIcon/exit_dark.svg" alt="Icon Exit Dark" class="w-6 cursor-pointer">
+            </button>
+          </li>
+        </div>
+
+      </ul>
+    </ng-template>
+
+
+  </nav>
+</section>

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
-import { ContextService } from 'src/app/services/context.service';
+import { ThemeService } from '../../../services/theme/theme.service';
+import { ContextService } from '../../../services/context/context.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../../services/serviceApi/api.service';
 import { LoadingService } from 'src/app/services/loading.service';
-import { AutoLoginService } from 'src/app/services/auto-login.service';
+import { AutoLoginService } from '../../../services/auto-login/auto-login.service';
 @Component({
   selector: 'app-acount-acess',
   standalone: true,
@@ -28,23 +28,23 @@ export class AcountAcessComponent  {
       this.isToggleChangeTheme = true
     }
     sessionStorage.removeItem('dateLogin');
-    localStorage.removeItem('token');
-    this.context.notAdvance();
+    this.context.notAdvanceRegister();
+    this.context.notAdvanceStartHome();
+    console.log(this.context.getAcessHomeValue().valueOf())
   }
   ngOnInit(): void {
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       sessionStorage.removeItem('dateLogin');
-      this.context.notAdvance();
-      this.context.notAdvanceStart();
-      this.isToggleChangeTheme = true
+      this.context.notAdvanceRegister();
+      this.context.notAdvanceStartHome();
+      this.isToggleChangeTheme = true;
     }
-
   }
 
   isToggleChangeTheme: boolean = false;
   isClickChangeTheme(): void {
-    this.isToggleChangeTheme = !this.isToggleChangeTheme
+    this.isToggleChangeTheme = !this.isToggleChangeTheme;
     this.themeService.toggleDarkMode(!this.themeService.isDarkMode.value)
   }
   OnChangeCheckBox(event: Event): void {
@@ -55,7 +55,6 @@ export class AcountAcessComponent  {
   onSubmit(event: Event): void {
     event.preventDefault();
     const regexEmailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log(regexEmailValidation.test(this.email))
     if (this.email.length === 0 || this.senha.length === 0) {
       this.errorForm = true
       this.errorMessage = 'Preencha todos os campos'
@@ -76,10 +75,14 @@ export class AcountAcessComponent  {
         data.subscribe((data: any) => {
           this.loadingService.show();
           localStorage.setItem('token', JSON.stringify(data.token));
-          this.autoLoginService.autoLogin()
-          this.context.getAcessInicioValue()
-        })
-      })
+          this.autoLoginService.autoLogin(true, true)
+        }, (err: any) => {
+          console.log(err.error);
+          this.errorForm = true
+            this.errorMessage = err.error.message
+        });
+      });
+
     }
   }
 }

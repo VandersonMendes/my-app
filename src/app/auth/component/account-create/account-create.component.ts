@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeService } from 'src/app/services/theme.service';
+import { ThemeService } from '../../../services/theme/theme.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContextService } from 'src/app/services/context.service';
+import { ContextService } from '../../../services/context/context.service';
 import { ValidationDataService } from 'src/app/services/validation-data.service';
 import { HeaderComponent } from '../header/header.component';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService } from '../../../services/serviceApi/api.service';
+import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-account-create',
   standalone: true,
@@ -20,23 +22,20 @@ export class AccountCreateComponent implements OnInit {
   company: string = '';
   errorForm: boolean = false;
   errorMessage: string = '';
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService) {
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService, private autoLoginService: AutoLoginService, private loadingService: LoadingService) {
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       this.isToggleChangeTheme = true
     }
     sessionStorage.removeItem('dateLogin');
-        localStorage.removeItem('token');
-    this.context.notAdvance()
   }
-  ngOnInit(): void {
+  ngOnInit() {
+    this.autoLoginService.autoLogin(true, true);
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       sessionStorage.removeItem('dateLogin');
-      this.context.notAdvance();
       this.isToggleChangeTheme = true
     }
-
   }
   isToggleChangeTheme: boolean = false;
   protected isClickChangeTheme(): void {
@@ -56,26 +55,26 @@ export class AccountCreateComponent implements OnInit {
     } else {
       this.errorForm = false
     }
-
+    // this.router.navigate(['/entrar'], { queryParams: { name: this.name, email: this.email, company: this.company } });
     this.apiService.verificEmailExist(this.email).subscribe((data: any) => {
-      if (!this.errorForm || data) {
-        this.context.saveDateLogin(dateLogin)
-        this.router.navigate(['registrar/advance']);
-        this.context.advance()
-        return
-      }
     }, (error: any) => {
       console.log(error)
       this.errorMessage = error.error.message
       this.errorForm = error.error.erro
       return
     })
-    const dateLogin = {
+    const data = {
       nome: this.name,
       email: this.email,
       company: this.company
     }
 
-
+    if (!this.errorForm) {
+      this.context.saveDateLogin(data)
+      this.router.navigate(['registrar/advance']);
+      this.context.advanceRegister()
+      return
+    }
   }
+
 }

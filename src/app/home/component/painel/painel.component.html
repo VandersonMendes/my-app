@@ -1,1 +1,139 @@
-<p>painel works!</p>
+<section class="raleway containerPainel raleway max-lg:mx-3">
+  <div id="rota">
+    <div class="flex gap-5 my-12 mx-7 max-md:gap-2">
+      <img src="../../../../assets/imgs/homeIcon/arrow.svg" alt="ICON SETA" class="w-6 max-md:w-4"
+        *ngIf="!isToggleChangeTheme; else ligthIcon">
+      <ng-template #ligthIcon>
+        <img src="../../../../assets/imgs/homeIcon/arrowDark.svg" alt="ICON SETA" class="w-6  max-md:w-4">
+      </ng-template>
+      <div class="flex justify-between items-center w-full">
+        <p class="text-2xl color-text-terciary font-bold max-md:text-xl">Painel</p>
+        <button id="menu-button"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-40 transition duration-150 ease-in-out"
+          (click)="clickMenuSidebar()">
+          <div class="menu-icon" [ngClass]="{ 'open': menuHamburger}">
+            <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+            <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+            <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+          </div>
+        </button>
+      </div>
+    </div>
+  
+  </div>
+  <div class="cadrastarColaboradores my-12 flex justify-center" id="colaboradores">
+      <button
+        class="flex justify-center items-center gap-4 bgGradientLight w-full max-w-5xl max-xl:max-w-3xl max-md:max-w-xl py-9 max-md:py-6 px-4 pl-9 rounded-xl mx-5  cursor-pointer hover:opacity-95 transition-opacity containerGradient"
+        *ngIf="!isToggleChangeTheme; else bgDark">
+        <img src="../../../../assets/imgs/homeIcon/adicionar_white.svg" alt="Icon adicionar" class="w-10 max-[400px]:w-7">
+        <p class="text-white text-3xl max-md:text-2xl font-bold colaboradorText">Cadrastrar novo Colaborador</p>
+      </button>
+    <ng-template #bgDark>
+      <button
+        class="flex justify-center  items-center gap-4  bgGradientDark w-full max-w-5xl max-xl:max-w-3xl max-md:max-w-xl py-9 px-4 pl-9 max-sm:py-3 rounded-xl mx-5  cursor-pointer hover:opacity-95 transition-opacity containerGradient">
+        <img src="../../../../assets/imgs/homeIcon/adicionar_white.svg" alt="Icon adicionar"
+          class="w-10 max-[400px]:w-7">
+        <p class="text-white text-3xl font-bold colaboradorText">Cadrastrar novo Colaborador</p>
+      </button></ng-template>
+
+  </div>
+  <div class="dadosContainer flex justify-center max-md:flex-col gap-5 my-12 animate__animated animate__fadeIn" id="dados"
+    [ngClass]="{ 'darkMode': isToggleChangeTheme }" *ngIf="status">
+    <div
+      class="flex justify-between items-center gap-10 max-xl:gap-5 border border-neutral-300 py-4 px-8 rounded-xl card1">
+      <div class="flex flex-col gap-3 ">
+        <p class="text-base color-gray-ligth max-[400px]:text-sm">Colabores ativos</p>
+        <p class="text-3xl max-[400px]:text-2xl font-sans color-text-card1 font-semibold"
+          [ngClass]="{ 'text-white': !isToggleChangeTheme }">{{status.ativo}}</p>
+      </div>
+      <img src="../../../../assets/imgs/homeIcon/userGrenn.svg" alt="Icon User" class="w-12  max-[400px]:w-9"
+        *ngIf="!isToggleChangeTheme; else userPurple">
+      <ng-template #userPurple>
+        <img src="../../../../assets/imgs/homeIcon/userPurpleDark.svg" alt="Icon User Dark"
+          class="w-12 max-[400px]:w-9"></ng-template>
+
+    </div>
+    <div
+      class="flex  justify-between items-center gap-10 max-xl:gap-5  border border-neutral-300 py-4 px-8 rounded-xl card2">
+      <div class="flex flex-col gap-3 ">
+        <p class="text-base max-[400px]:text-sm color-gray-ligth">Colabores Afastados</p>
+        <p class="text-3xl font-sans color-text-card2 font-semibold max-[400px]:text-2xl">{{status.desativado}}</p>
+      </div>
+      <img src="../../../../assets/imgs/homeIcon/userRed.svg" alt="Icon UserRed" class="w-12 max-[400px]:w-9">
+    </div>
+    <div
+      class="flex justify-between items-center gap-10 max-xl:gap-5 border border-neutral-300 py-4 px-8 rounded-xl card3">
+      <div class="flex flex-col gap-3 ">
+        <p class="text-base max-[400px]:text-sm color-gray-ligth">Colabores de Férias</p>
+        <p class="text-3xl font-sans color-text-card3 font-semibold max-[400px]:text-2xl">{{status.ferias}}</p>
+      </div>
+      <img src="../../../../assets/imgs/homeIcon/sun.svg" alt="Icon Sun" class="w-12 max-[400px]:w-9">
+    </div>
+  </div>
+  <!-- TAKS -->
+  <div class="containerTarefas flex items-center flex-col gap-16 max-[400px]:gap-8 relative" id="Tarefas"
+    [ngClass]="{ 'darkMode': !isToggleChangeTheme }">
+    <!-- TEXT -->
+    <div class="">
+      <h2 class="text-5xl color-text-terciary font-bold max-sm:text-4xl">Tarefas</h2>
+    </div>
+    <!-- Tarefas -->
+    <div class="flex flex-col gap-6 max-[400px]:gap-2 text-base font-medium mb-10 containerTarefas cursor-pointer">
+  <ng-container *ngIf="listTasks.length > 0; else listNone">
+    <div *ngFor="let item of listTasks" class="flex items-start gap-1 p-4 rounded-md relative cardTarefa">
+    <div class="checkbox-wrapper-31">
+  <input 
+    type="checkbox" 
+    (change)="checkedTask(item._id)" 
+    [ngClass]="{ 'checkComplet animate__rollIn': item.completed}"
+    class="w-6 h-6" 
+  />
+  <svg viewBox="0 0 35.6 35.6" class="svgChecked w-6 h-6">
+    <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+    <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+    <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+  </svg>
+</div>
+
+
+
+
+      <p class="inline ml-3 animate max-[600px]:text-sm" [ngClass]="{ 'text-white': isToggleChangeTheme }">{{ item.taks }}</p>
+      <button class="buttonModalDeletar" (click)="IsModalDeletar(item._id)">
+        <img src="../../../../assets/imgs/homeIcon/lixeira_ligth.svg" alt="Icon Lixeira ligth"
+          class="w-9 absolute top-3 right-4 bg-slate-300 rounded-lg p-2 animated animate__animated animate__fadeIn">
+      </button>
+    </div>
+  </ng-container>
+      <ng-template #listNone>
+      
+      <h1 class="text-5xl font-semibold tracking-wider logoHeader my-16">
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">N</span>
+          <span class="color-text-quaternary">ão</span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }"> há </span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">n</span>
+          <span class="color-text-quaternary">enh</span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">uma </span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">t</span>
+          <span class="color-text-quaternary">ar</span>
+          <span class="color-text-terciary" [ngClass]="{ 'color-text-white': isToggleChangeTheme }">efa...</span>
+
+      </h1></ng-template>
+      
+      <button class="absolute right-0 bottom-0" (click)="addedTaks()">
+        <img src="../../../../assets/imgs/homeIcon/adicionar_ligth.svg" alt="Icon adicionar Ligth"
+          class="w-12 max-sm:w-10" *ngIf="!isToggleChangeTheme; else iconGrenn">
+        <ng-template #iconGrenn>
+          <img src="../../../../assets/imgs/homeIcon/adicionar_green_dark.svg" alt="Icon adicionar Dark"
+            class="w-12 max-sm:w-10"></ng-template>
+
+      </button>
+      <p class="text-xs opacity-50 text-center" [ngClass]="{ 'text-gray-300': isToggleChangeTheme }">*Somente <span
+          class="font-sans">5 </span>tarefas*</p>
+    </div>
+  </div>
+  <div>
+  </div>
+</section>
+<app-modal [IsModal]='isToggleChangeTheme' *ngIf="isToggleModalAddedTaks" (closeModalEvent)="modalEventClose()" (load)="loadNewTaks()"
+  [ngClass]="{  'animated animate__animated animate__fadeOut': !isToggleModalAddedTaks }"></app-modal>

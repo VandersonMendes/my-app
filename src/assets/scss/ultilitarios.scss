@@ -24,6 +24,9 @@
   --color-text-white: #ffffff;
   // COLOR SHADOW (theme light)
   --color-shadow-primary: #ffbb11;
+   // BACKGROUND GRADIENT
+  --background-ligth: linear-gradient(to right, #02c2cd, #00b7db, #00a9e9, #0099f0, #0085ef, #0d7aee, #216feb, #3463e7, #2c60eb, #245eef, #185bf2, #0658f6);
+
 }
 :root .dark-mode {
   // COLOR BG (theme dark)
@@ -40,6 +43,7 @@
   --color-text-white: #ffffff;
   // COLOR SHADOW (theme dark)
   --color-shadow-primary: #a4a4a4;
+  --background-dark:
 }
 
 .color-bg-base {
@@ -78,7 +82,19 @@
 .color-shadow-primary {
   border: 2px solid var(--color-shadow-primary);
 }
+.bgGradientLight {
+  background: var(--background-ligth);
+}
+.bgGradientDark{
+  background: hsla(164, 79%, 44%, 1);
 
+background: linear-gradient(90deg, hsla(164, 79%, 44%, 1) 0%, hsla(164, 85%, 36%, 1) 48%, hsla(164, 82%, 33%, 1) 75%);
+
+background: -moz-linear-gradient(90deg, hsla(164, 79%, 44%, 1) 0%, hsla(164, 85%, 36%, 1) 48%, hsla(164, 82%, 33%, 1) 75%);
+
+background: -webkit-linear-gradient(90deg, hsla(164, 79%, 44%, 1) 0%, hsla(164, 85%, 36%, 1) 48%, hsla(164, 82%, 33%, 1) 75%);
+
+}
 * {
   margin: 0;
   padding: 0;

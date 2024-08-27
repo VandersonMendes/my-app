@@ -8,7 +8,6 @@ export class LoadingService {
   public loading$ = this.loadingSubject.asObservable();
 
   show() {
-    console.log('teste')
     this.loadingSubject.next(true);
   }
 
