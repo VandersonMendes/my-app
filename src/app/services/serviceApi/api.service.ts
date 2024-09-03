@@ -46,4 +46,12 @@ export class ApiService {
     console.log(idCompany, completed, idTask)
     return  this.http.put(`${this.urlBaseHome}/completedTask`, {completed, idTask, idCompany });
   }
+    getCollaborator(idCompany: string) {
+    return  this.http.get(`${this.urlBaseHome}/getCollaborator/${idCompany}`);
+  }
+
+  async createCollaborator(newColaborator: any) {
+    console.log(newColaborator)
+    return  this.http.put(`${this.urlBaseHome}/create_collaborator`, newColaborator);
+  }
 }

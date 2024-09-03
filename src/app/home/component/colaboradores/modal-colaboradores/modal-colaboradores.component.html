@@ -1,0 +1,54 @@
+<div  class="modal raleway animated animate__animated animate__fadeInUp cursor-pointer"  [ngClass]="{ 'darkMode': isToggleChangeTheme}" >
+  <div class="bg-white containerModal flex flex-col items-center justify-center gap-16 rounded-xl color-bg-primary">
+    <h1 class="text-5xl max-md:text-4xl max-[400px]:text-2xl font-bold color-text-terciary ">Criar Colaborador</h1>
+    <div class="relative">
+    <form class="flex justify-center gap-16  mx-10">
+      <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-1">
+          <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Nome</label>
+            <input type="text" class="bg-transparent pl-3 p-1  rounded-md " placeholder="nome do colaborador" name="nome"  [(ngModel)]="nome"  >
+        </div>
+          <div class="flex flex-col gap-1">
+            <label for="tarefa" class="text-gray-400 font-bold cursor-text  " >Email</label>
+            <input type="text" class="bg-transparent pl-3 p-1  rounded-md  "  placeholder="EX: joãoPeres123@gmail.com"  name="email"  [(ngModel)]="email">
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="cpf" class="text-gray-400 font-bold cursor-text  " >CPF</label>
+            <input type="text" class="bg-transparent pl-3 p-1  rounded-md "  placeholder="Seu CPF" name="cpf"  [(ngModel)]="cpf" (ngModelChange)="onChangeFormatCpf($event)" maxlength="14">
+          </div>
+      </div>
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-1">
+            <label for="cars" class="text-gray-400 font-bold cursor-text  ">Status</label>
+            <select name="cars" id="cars" form="carform" class="bg-transparent pl-3 p-1  rounded-md" name="situation"  [(ngModel)]="situation">
+                <option value="AT" [selected]="situation === 'Ativo'">Ativo</option>
+              <option value="AF">Afastado</option>
+              <option value="FE">Férias</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Posição</label>
+            <input type="text" class="bg-transparent pl-3 p-1  rounded-md " placeholder="EX: desenvolvedor Mobile" name="position"  [(ngModel)]="position">
+          </div>
+        </div>
+    </form>
+      <div class="flex gap-10 max-sm:gap-6 max-[400px]:gap-2 items-end absolute right-1 max-[700px]:right-8 max-[700px]:right-16 max-[400px]:right-7 pt-10 text-sm ">
+        <button class="buttonCancelar max-[400px]:text-xs px-7 max-[400px]:px-5 py-2 font-bold rounded-md hover:scale-105 transition-transform" (click)="closeModal()">Cancelar</button> 
+        <button class="buttonAdicionar max-[400px]:text-xs px-7 py-2 font-bold rounded-md hover:scale-105 transition-transform" (click)="createCollaborador()">Adicionar</button>
+  
+      </div>
+    </div>
+ <p *ngIf="message.message"
+   class="text-center text-red-600 font-bold mt-2 animated animate__animated animate__fadeIn" [ngClass]="{ 'text-red-600': !message.sucess}">
+   {{ message.message }}
+</p>
+<p *ngIf="message.message && message.sucess"
+   class="text-center text-green-600 font-bold mt-14 animated animate__animated animate__fadeIn"[ngClass]="{
+    'text-green-600': message.sucess
+   }">
+   {{ message.message }}
+</p> 
+
+  </div>
+
+</div>

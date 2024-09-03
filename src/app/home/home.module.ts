@@ -6,9 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
 import { HeaderComponent } from "../auth/component/header/header.component";
 import { HeaderHomeComponent } from './component/header-home/header-home.component';
-import { ModalComponent } from './component/painel/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { ColaboradoresComponent } from './component/colaboradores/colaboradores.component';
+import { ModalColaboradoresComponent } from './component/colaboradores/modal-colaboradores/modal-colaboradores.component';
 
 @NgModule({
   imports: [
@@ -17,13 +17,13 @@ import { ColaboradoresComponent } from './component/colaboradores/colaboradores.
     SideBarComponent,
     PainelComponent,
     HeaderComponent,
-    ModalComponent,
         ColaboradoresComponent,
+      ModalColaboradoresComponent,
     HeaderHomeComponent,
     FormsModule
   ],
   declarations: [
-    HomeComponent,
+    HomeComponent
     
 
   ],

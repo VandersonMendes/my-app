@@ -1,0 +1,119 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  z-index: 3003;
+  cursor: pointer;
+}
+form {
+  input,
+  select {
+    width: 330px;
+    border: 0.4px solid #cccccc5b;
+  }
+  select {
+    background-color: var(--color-bg-primary);
+  }
+  label {
+    color: var(--color-bg-quaternary);
+  }
+  input:placeholder {
+    color: #bba3a3;
+  }
+}
+.modal.darkMode {
+  form {
+    input,
+    select {
+      color: #ffffff !important;
+    }
+  }
+}
+.containerModal {
+  max-width: 900px;
+  max-height: 500px;
+  height: 100%;
+  width: 100%;
+  z-index: 3001;
+  box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
+  -webkit-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
+  -moz-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
+}
+.buttonCancelar {
+  background-color: #e85744;
+}
+.buttonAdicionar {
+  background-color: #17c99a;
+}
+@media (max-width: 1000px) {
+  .modal.modal.darkMode {
+    .containerModal {
+      width: 700px;
+      margin: 0 2rem;
+    }
+  }
+  .containerModal {
+    max-width: 700px;
+  }
+  form {
+    input,
+    select {
+      width: 220px;
+      border: 0.4px solid #cccccc5b;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .modal.modal.darkMode {
+    .containerModal {
+      width: 550px;
+    }
+  }
+  .containerModal {
+    width: 550px;
+  }
+}
+@media (max-width: 550px) {
+  .modal.modal.darkMode {
+    .containerModal {
+      width: 400px;
+      margin: 0 3rem;
+      max-height: 100%;
+    }
+  }
+  form {
+    flex-direction: column;
+  gap: 2rem;
+    input,
+    select {
+      width: 150px;
+      border: 0.4px solid #cccccc5b;
+    }
+  }
+}
+@media (max-width: 400px) {
+  .modal.modal.darkMode {
+    .containerModal {
+      width: 300px;
+      margin: 0 3rem;
+  
+    }
+  }
+  .containerModal {
+    max-width: 300px;
+    margin: 0 3rem;
+  }
+   form {
+    input,
+    select {
+      width: 150px;
+      border: 0.4px solid #cccccc5b;
+    }
+  }
+}
