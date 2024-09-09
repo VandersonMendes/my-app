@@ -59,6 +59,26 @@ export class ColaboradoresComponent  {
   modalEventClose(){
     this.isToggleModalNewCollaborator = false
   }
-
+  async deleteColaborator(id: string){
+      this.context.idUser$.subscribe((user: any) =>{
+      if(user){
+         this.apiService.deleteCollaborator(id,user).subscribe((res: any) => {
+            if(res){
+              this.loadCollaborators()
+            }
+        })
+      }
+    });
+  }
+  loadCollaborators(){
+    this.context.idUser$.subscribe((user: any) =>{
+      if(user){
+        this.apiService.getCollaborator(user).subscribe((res: any) => {
+            console.log(res)
+            this.colaborators = res;
+        })
+      }
+    });
+  }
   
 }

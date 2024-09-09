@@ -54,4 +54,7 @@ export class ApiService {
     console.log(newColaborator)
     return  this.http.put(`${this.urlBaseHome}/create_collaborator`, newColaborator);
   }
+    deleteCollaborator(idCollaborator: string, idCompany: string) {
+    return this.http.delete(`${this.urlBaseHome}/delete_collaborator/${idCollaborator}/${idCompany}`);
+  }
 }

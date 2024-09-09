@@ -31,6 +31,7 @@ export class ModalColaboradoresComponent {
   situation: string = ''
   position: string = ''
   @Output() closeModalEvent = new EventEmitter();
+  @Output() loadCreateCollaborator = new EventEmitter();
   closeModal() {
     this.closeModalEvent.emit(true)
     console.log('modal fechado')
@@ -66,17 +67,20 @@ export class ModalColaboradoresComponent {
           idCompany: companyId
         }
       }
-      console.log(data)
     }
 
-    this.apiService.createCollaborator(data).then((res)  =>{
-      res.subscribe((resp) =>{
-        console.log(resp)
+    this.apiService.createCollaborator(data).then((res) => {
+      res.subscribe((resp) => {
+        if (resp) {
+          this.loadCreateCollaborator.emit(true)
+          setTimeout(() => {
+            this.closeModal()
+          }, 2000)
+        }
       })
     })
   }
   onChangeFormatCpf(event: Event) {
-
     const hasNumber = /[a-zA-Z]/;
     if (hasNumber.test(this.cpf)) {
       this.message = {
