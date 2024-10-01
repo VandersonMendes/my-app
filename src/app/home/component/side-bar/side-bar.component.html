@@ -1,4 +1,4 @@
-<section class="flex items-center min-h-screen fixed sideBar" [ngClass]="{ 'open': sideBarMobile}">
+<section class="flex items-center min-h-screen fixed sideBar animate__animated animate__fadeInLeft" [ngClass]="{ 'open': sideBarMobile}">
   <nav class=" max-w-44 max w-full ml-4 relative">
 
     <ul
@@ -15,7 +15,7 @@
       </li>
       <li>
         <button>
-          <a href="" class="flexResponsiveButton">
+          <a href="/colaboradores" class="flexResponsiveButton">
             <img src="../../../../assets/imgs/sideBar/colaboradores.svg" alt="Icon colaboradores"
               class="w-6 cursor-pointer">
           </a>
@@ -23,22 +23,19 @@
       </li>
       <li>
         <button>
-          <a href="/painel" class="flexResponsiveButton">
+          <a href="/company
+          " class="flexResponsiveButton">
             <img src="../../../../assets/imgs/sideBar/home.svg" alt="Icon Painel" class="w-6 cursor-pointer">
 
           </a>
         </button>
       </li>
       <li>
-        <a href=""><img src="../../../../assets/imgs/sideBar/config.svg" alt="Icon config" class="w-6 cursor-pointer">
+        <a href="/config"><img src="../../../../assets/imgs/sideBar/config.svg" alt="Icon config" class="w-6 cursor-pointer">
         </a>
       </li>
       <li>
-        <button>
-          <a href="">
-            <img src="../../../../assets/imgs/sideBar/duvidas.svg" alt="Icon duvidas" class="w-6 cursor-pointer">
-          </a>
-        </button>
+    
       </li>
       <div class="mt-7 flex flex-col gap-7">
         <li class="">
@@ -76,29 +73,23 @@
         </li>
         <li>
           <button>
-            <a href="/painel">
+            <a href="/company">
               <img src="../../../../assets/imgs/sideBar/homeDark.svg" alt="Icon Home Dark" class="w-6 cursor-pointer">
             </a>
           </button>
         </li>
         <li>
           <button>
-            <a href=""><img src="../../../../assets/imgs/sideBar/configDark.svg" alt="Icon config Dark"
+            <a href="/config"><img src="../../../../assets/imgs/sideBar/configDark.svg" alt="Icon config Dark"
                 class="w-6 cursor-pointer">
             </a>
           </button>
         </li>
         <li>
-          <button>
-            <a href="">
-              <img src="../../../../assets/imgs/sideBar/duvidasDark.svg" alt="Icon duvidas Dark"
-                class="w-6 cursor-pointer">
-            </a>
-          </button>
         </li>
         <div class="mt-7 flex flex-col gap-7">
 
-          <li class="">
+          <li>
             <button class=" rounded-full" (click)="isClickChangeTheme()">
               <img class="w-5 iconTheme" src="../../../assets/imgs/theme_mode_icon/dark theme icon/moon.svg"
                 alt="Icon theme dark">

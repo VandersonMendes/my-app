@@ -1,5 +1,5 @@
-<header class="containerHome shadow raleway color-bg-primary ">
-  <div class="flex justify-around py-6 items-center flexContainer animate__animated animate__fadeIn">
+<header class="shadow raleway color-bg-primary ">
+  <div class="flex justify-around py-6 items-center flexContainer">
     <div>
       <h1 class="text-4xl font-semibold tracking-wider logoHeader ">
         <a href="/">
@@ -9,8 +9,8 @@
         </a>
       </h1>
     </div>
-    <div class="flex items-start gap-4" >
-      <p class="text-base font-medium animate__animated animate__bounce max-sm:text-sm companyText" [ngClass]="{ 'color-text-white': isToggleChangeTheme }" *ngIf="dataUser" >{{isNameCompany}}</p>
+    <div class="flex items-start gap-4">
+      <p class="max-md:text-xs text-base font-medium animated animate__bounceIn" [ngClass]="{ 'color-text-white': isToggleChangeTheme }" *ngIf="isNameCompany">{{isNameCompany}}</p>
       <img src="./../../../../assets/imgs/user-icon/user_login_ligth.svg" alt="icone de usuario não criado - light Mode"
         class="w-5 iconUser" *ngIf="!isToggleChangeTheme; else dark">
         <ng-template #dark>

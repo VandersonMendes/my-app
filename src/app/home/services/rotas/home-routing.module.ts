@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PainelComponent } from '../../component/painel/painel.component';
 import { advanceHomeGuard } from '../guard/advance-home.guard';
 import { HomeComponent } from '../../home/home.component';
 import { ColaboradoresComponent } from '../../component/colaboradores/colaboradores.component';
+import { ConfigComponent } from '../../component/config/config.component';
+import { PainelCompanyComponent } from '../../component/painel-company/painel-company.component';
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [advanceHomeGuard] , children: [
-    { path: 'painel', component: PainelComponent,},
+  { path: '', component: HomeComponent, children: [
+    { path: 'company', component: PainelCompanyComponent,},
     { path: 'colaboradores', component: ColaboradoresComponent},
-  // { path: '', redirectTo: '/painel', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/painel' }
+    { path: 'config', component: ConfigComponent}
   ]},
 ];
 

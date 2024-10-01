@@ -1,0 +1,69 @@
+<section class="containerColaboradores relative animate__animated animate__fadeIn my-10 px-20 max-[1000px]:px-0 mt-0">
+    <div class="flex gap-4 my-12 mx-7 max-md:gap-2">
+        <img src="../../../../assets/imgs/homeIcon/arrow.svg" alt="ICON SETA" class="w-6 max-md:w-4"
+            *ngIf="!isToggleChangeTheme; else ligthIcon">
+        <ng-template #ligthIcon>
+            <img src="../../../../assets/imgs/homeIcon/arrowDark.svg" alt="ICON SETA" class="w-6  max-md:w-4">
+        </ng-template>
+        <div class="flex justify-between items-center w-full">
+            <p class="text-2xl color-text-terciary font-bold max-md:text-xl">
+                Configurações</p>
+            <button id="menu-button"
+                class="inline-flex items-center justify-center p-2 rounded-md text-gray-40 transition duration-150 ease-in-out"
+                (click)="clickMenuSidebar()">
+                <div class="menu-icon" [ngClass]="{ 'open': menuHamburger}">
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                    <div [ngClass]="{ 'darkMode': isToggleChangeTheme}"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+    <div class="modal raleway animated animate__animated animate__fadeInUp cursor-pointer"
+        [ngClass]="{ 'darkMode': isToggleChangeTheme}">
+        <div
+            class="bg-white containerModal flex flex-col items-center justify-center gap-10 rounded-xl color-bg-primary">
+            <h1 class="text-5xl max-md:text-4xl max-[400px]:text-2xl font-bold color-text-terciary ">Configurações
+            </h1>
+            <div class="relative">
+                <form class="flex justify-center gap-16  mx-10">
+                    <div class="flex flex-col gap-3">
+                        <div class="flex flex-col gap-1">
+                            <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Nome</label>
+                            <input type="text" class="bg-transparent pl-3 p-1  rounded-md "
+                                placeholder="nome do colaborador" name="nome" [(ngModel)]="nome" [value]="nome">
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label for="tarefa" class="text-gray-400 font-bold cursor-text disabled ">CNPJ</label>
+                            <input type="text" class="bg-transparent pl-3 p-1  rounded-md backdrop-blur-sm "
+                                placeholder="EX:  XX.XXX.XXX/0001-XX" name="cnpj" [(ngModel)]="cnpj" [disabled]="true">
+                        </div>
+
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex flex-col gap-1">
+                            <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Email</label>
+                            <input type="text" class="bg-transparent pl-3 p-1  rounded-md "
+                                placeholder="EX: desenvolvedor Mobile" name="email" [(ngModel)]="email">
+                            <div class="flex flex-col gap-1">
+                                <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Nome da
+                                    Empresa</label>
+                                <input type="text" class="bg-transparent pl-3 p-1  rounded-md "
+                                    placeholder="EX: desenvolvedor Mobile" name="company" [(ngModel)]="company">
+                            </div>
+                        </div>
+                        <div class="my-6 flex justify-end"><button
+                                class="buttonAdicionar inline-block max-[400px]:text-xs px-7 py-2 font-bold rounded-md hover:scale-105 transition-transform" (click)="upadteCompany()">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+               <p *ngIf="message.message"
+            class="text-center text-green-600 font-bold mt-2 animated animate__animated animate__fadeIn"
+            [ngClass]="{ 'text-red-600': !message.sucess}">
+            {{ message.message }}
+        </p>
+        </div>
+     
+    </div>
+</section>

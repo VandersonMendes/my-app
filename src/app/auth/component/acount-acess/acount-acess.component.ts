@@ -8,6 +8,7 @@ import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../../../services/serviceApi/api.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AutoLoginService } from '../../../services/auto-login/auto-login.service';
+import { LoginService } from '../../service/login/login.service';
 @Component({
   selector: 'app-acount-acess',
   standalone: true,
@@ -21,27 +22,17 @@ export class AcountAcessComponent  {
   errorForm: boolean = false;
   errorMessage: string = '';
   toggleButtonVisiblePassword: boolean = false;
-  srcIconCheckboxPassword: string = ''
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService) {
+ 
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService, private loginService: LoginService) {} 
+  
+   ngOnInit(): void {
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       this.isToggleChangeTheme = true
     }
-    sessionStorage.removeItem('dateLogin');
-    this.context.notAdvanceRegister();
-    this.context.notAdvanceStartHome();
-    console.log(this.context.getAcessHomeValue().valueOf())
-  }
-  ngOnInit(): void {
-    const prefersTheme = localStorage.getItem('theme');
-    if (prefersTheme === 'dark') {
-      sessionStorage.removeItem('dateLogin');
-      this.context.notAdvanceRegister();
-      this.context.notAdvanceStartHome();
-      this.isToggleChangeTheme = true;
-    }
-  }
+    this.loginService.authenticateToken();
 
+  }
   isToggleChangeTheme: boolean = false;
   isClickChangeTheme(): void {
     this.isToggleChangeTheme = !this.isToggleChangeTheme;
@@ -75,9 +66,12 @@ export class AcountAcessComponent  {
         data.subscribe((data: any) => {
           this.loadingService.show();
           localStorage.setItem('token', JSON.stringify(data.token));
-          this.autoLoginService.autoLogin(true, true)
+          setInterval(() => {
+             this.loginService.authenticateToken();
+             this.loadingService.hide();
+          }, 2000);
+          
         }, (err: any) => {
-          console.log(err.error);
           this.errorForm = true
             this.errorMessage = err.error.message
         });

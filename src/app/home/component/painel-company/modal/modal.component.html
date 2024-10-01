@@ -1,10 +1,11 @@
-<div  class="modal raleway animated animate__animated animate__fadeInUp cursor-pointer"  [ngClass]="{ 'darkMode': isToggleChangeTheme }" >
+
+<section  class="modal raleway animated animate__animated animate__fadeInUp cursor-pointer"  [ngClass]="{ 'darkMode': isToggleChangeTheme }" >
   <div class="bg-white containerModal flex flex-col items-center justify-center gap-16 rounded-xl color-bg-primary">
     <h1 class="text-5xl max-md:text-4xl max-[400px]:text-2xl font-bold color-text-terciary ">Adicione sua Tarefa</h1>
     <div class="relative">
     <div class="flex flex-col mx-10">
       <label for="tarefa" class="text-gray-400 font-bold cursor-text  ">Digte sua tarefa aqui</label>
-      <textarea type="text" class="resize-none textArea p-3 text-lg font-medium text-gray-500 h-5"   [(ngModel)]="taks"  name="taks" (ngModelChange)="changeTask()"></textarea>
+      <textarea type="text" class="resize-none textArea p-3 text-lg font-medium text-gray-500 h-5"   [(ngModel)]="task"  name="taks" (ngModelChange)="changeTask()"></textarea>
     </div>
       <div class="flex gap-10 max-sm:gap-6 max-[400px]:gap-2 items-end absolute right-1 max-[700px]:right-8 max-[700px]:right-16 max-[400px]:right-7 pt-10 text-sm text-white">
         <button class="buttonCancelar max-[400px]:text-xs px-7 max-[400px]:px-5 py-2 font-bold rounded-md hover:scale-105 transition-transform" (click)="closeModal()">Cancelar</button>
@@ -20,7 +21,6 @@
    class="text-center text-green-600 font-bold mt-14 animated animate__animated animate__fadeIn">
    {{ sucessMessage }}
 </p>
-
   </div>
+</section>
 
-</div>

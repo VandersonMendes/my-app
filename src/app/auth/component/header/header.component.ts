@@ -10,13 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit{
   constructor(private themeService: ThemeService) {
-     themeService.isDarkMode$.subscribe(( isDark: any) =>{
-       this.isToggleChangeTheme = isDark
-        console.log(this.isToggleChangeTheme)
-     })
+   
   }
   ngOnInit(): void {
-
+  this.themeService.isDarkMode$.subscribe(( isDark: any) =>{
+       this.isToggleChangeTheme = isDark
+     })
   }
 
    isToggleChangeTheme: boolean = false;

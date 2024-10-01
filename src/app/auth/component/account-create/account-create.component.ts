@@ -9,6 +9,7 @@ import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../../../services/serviceApi/api.service';
 import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { LoginService } from '../../service/login/login.service';
 @Component({
   selector: 'app-account-create',
   standalone: true,
@@ -22,20 +23,17 @@ export class AccountCreateComponent implements OnInit {
   company: string = '';
   errorForm: boolean = false;
   errorMessage: string = '';
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService, private autoLoginService: AutoLoginService, private loadingService: LoadingService) {
-    const prefersTheme = localStorage.getItem('theme');
-    if (prefersTheme === 'dark') {
-      this.isToggleChangeTheme = true
-    }
-    sessionStorage.removeItem('dateLogin');
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService, private autoLoginService: AutoLoginService, private loadingService: LoadingService, private loginService: LoginService) {
+
   }
   ngOnInit() {
-    this.autoLoginService.autoLogin(true, true);
+    // this.autoLoginService.autoLogin(true, true);
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       sessionStorage.removeItem('dateLogin');
       this.isToggleChangeTheme = true
     }
+    this.loginService.authenticateToken();
   }
   isToggleChangeTheme: boolean = false;
   protected isClickChangeTheme(): void {
@@ -58,7 +56,6 @@ export class AccountCreateComponent implements OnInit {
     // this.router.navigate(['/entrar'], { queryParams: { name: this.name, email: this.email, company: this.company } });
     this.apiService.verificEmailExist(this.email).subscribe((data: any) => {
     }, (error: any) => {
-      console.log(error)
       this.errorMessage = error.error.message
       this.errorForm = error.error.erro
       return

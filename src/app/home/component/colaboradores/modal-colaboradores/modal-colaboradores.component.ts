@@ -11,12 +11,9 @@ import { ApiService } from 'src/app/services/serviceApi/api.service';
   imports: [CommonModule, FormsModule],
   standalone: true
 })
-export class ModalColaboradoresComponent {
+export class ModalColaboradoresComponent{
   constructor(public themeService: ThemeService, private context: ContextService, private apiService: ApiService) {
-    this.themeService.isDarkMode$.subscribe((isDarkTheme) => {
-      this.isToggleChangeTheme = isDarkTheme;
-    });
-    console.log(this.cpf)
+  
   }
   isToggleChangeTheme: boolean = false;
   message = {
@@ -34,20 +31,22 @@ export class ModalColaboradoresComponent {
   @Output() loadCreateCollaborator = new EventEmitter();
   closeModal() {
     this.closeModalEvent.emit(true)
-    console.log('modal fechado')
     this.exitModal = true
+  }
+  ngOnInit(): void {
+        this.themeService.isDarkMode$.subscribe((isDarkTheme) => {
+      this.isToggleChangeTheme = isDarkTheme;
+    });
   }
   createCollaborador() {
     let data;
     let companyId: string = ''
     if (this.nome == '' || this.email == '' || this.cpf == '' || this.situation == '' || this.position == '') {
-      console.log(this.nome, this.email, this.cpf, this.situation, this.position);
-      console.log(this.situation.valueOf())
       this.message = {
         message: 'Preencha todos os dados',
         sucess: false
       }
-      return
+      return 
     } else {
       this.message = {
         message: '',
@@ -68,7 +67,6 @@ export class ModalColaboradoresComponent {
         }
       }
     }
-
     this.apiService.createCollaborator(data).then((res) => {
       res.subscribe((resp) => {
         if (resp) {

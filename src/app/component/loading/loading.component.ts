@@ -14,7 +14,6 @@ export class LoadingComponent {
 
   constructor(private loadingService: LoadingService, private router: Router) {
  this.loadingService.loading$.subscribe((loading:boolean) =>{
-  console.log(loading)
   this.loading$ = loading
  })
   this.router.events.subscribe(event => {

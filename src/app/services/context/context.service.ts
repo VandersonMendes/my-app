@@ -3,12 +3,12 @@ import { DataCreate } from '../../interfaces/dataLogin';
 import { Router } from '@angular/router';
 import { HttpClient} from "@angular/common/http";
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '../serviceApi/api.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ContextService {
-  constructor(private router: Router, private http: HttpClient) { 
-    console.log(this.getAcessHomeValue().valueOf())
+  constructor(private router: Router, private http: HttpClient, private apiService: ApiService) { 
   }
   private advanceLogin = new BehaviorSubject<boolean>(false);
   advanceLogin$ = this.advanceLogin.asObservable();
@@ -22,16 +22,16 @@ export class ContextService {
     return this.advanceLogin.getValue();
   }
 
-  private advanceHome = new BehaviorSubject<boolean>(false);
-  advanceHome$ = this.advanceHome.asObservable();
-  advanceStartHome() {
-    this.advanceHome.next(true);
-  }
-  notAdvanceStartHome() {
-    this.advanceHome.next(false);
-  }
-  getAcessHomeValue() {
-    return this.advanceHome.getValue();
+  // private advanceHome = new BehaviorSubject<boolean>(false);
+  // advanceHome$ = this.advanceHome.asObservable();
+  // advanceStartHome() {
+  //   this.advanceHome.next(true);
+  // }
+  // notAdvanceStartHome() {
+  //   this.advanceHome.next(false);
+  // }
+  isGuardHome(value: boolean): boolean {
+    return value
   }
 
   saveDateLogin(dataLogin: DataCreate) {
@@ -44,9 +44,21 @@ export class ContextService {
      this.idUser.next(id);
    }
    returnIdUser(){
-     console.log(this.idUser.getValue())
      return this.idUser.getValue();
    }
-
-
+     //  function return idCompanuy
+      returnidCompany(): void{
+        const token = localStorage.getItem('token');
+        if (!token) {
+          this.router.navigate(['registrar']);
+          return;
+        }
+        let id;
+        this.apiService.validate_token(token).then(data => {
+            data.subscribe((data: any) => {
+                this.idUser.next(data.id)
+            })
+        })
+        // return id
+      }
 }

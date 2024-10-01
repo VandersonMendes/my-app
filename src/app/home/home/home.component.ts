@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoLoginService } from '../../services/auto-login/auto-login.service';
+import { ContextService } from 'src/app/services/context/context.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +8,8 @@ import { AutoLoginService } from '../../services/auto-login/auto-login.service';
 })
 export class HomeComponent implements OnInit{
   ngOnInit(): void {
-    this.autoLoginService.autoLogin(false, false);
+        this.context.returnIdUser();
+
   }
-  constructor(private autoLoginService: AutoLoginService) {}
+  constructor(private autoLoginService: AutoLoginService, private context: ContextService) {}
 }

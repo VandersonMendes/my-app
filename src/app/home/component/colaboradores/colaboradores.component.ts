@@ -7,6 +7,7 @@ import { ContextService } from 'src/app/services/context/context.service';
 import { ApiService } from 'src/app/services/serviceApi/api.service';
 import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 import { ModalColaboradoresComponent } from './modal-colaboradores/modal-colaboradores.component';
+import { ModalColaboradoresService } from '../../services/modalColaboradores/modal-colaboradores.service';
 
 @Component({
   selector: 'app-colaboradores',
@@ -20,29 +21,18 @@ export class ColaboradoresComponent  {
   // modalSidebar: boolean = false
   isToggleModalNewCollaborator: boolean = false;
   isToggleChangeTheme: boolean = false;
-    colaborators: Employees[]= [];
-    // nome: string = '';
-    // cpf: string = '';
-    // situation: string = '';
-    // email: string = '';
-    // position: string = '';
+  colaborators: Employees[]= [];
+  constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private autoLogionService: AutoLoginService, private modalColaboradoresService: ModalColaboradoresService) {
   
-  constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private autoLogionService: AutoLoginService) {
-    themeService.isDarkMode$.subscribe((isDark: any) => {
-      this.isToggleChangeTheme = isDark
-    });
   }
   ngOnInit(): void {
-    this.context.idUser$.subscribe((user: any) =>{
-      if(user){
-        this.apiService.getCollaborator(user).subscribe((res: any) => {
-            console.log(res)
-            this.colaborators = res;
-        })
-      }
+    this.loadCollaborators();
+    if(this.modalColaboradoresService.getValueModalColaboradores()){
+      this.isToggleModalNewCollaborator = true
+    }
+       this.themeService.isDarkMode$.subscribe((isDark: any) => {
+      this.isToggleChangeTheme = isDark
     });
-    
-
   }
   clickMenuSidebar() {
     this.menuHamburger = !this.menuHamburger;
@@ -51,11 +41,7 @@ export class ColaboradoresComponent  {
   isToggleModalAddCollaboratores() {
     this.isToggleModalNewCollaborator = !this.isToggleModalNewCollaborator
   }
-  // addCollaboratores() {
-  //     if(this.nome == '' || this.cpf == '' || this.situation == '' || this.email == '' || this.position == ''){
-  //     }
 
-  // }
   modalEventClose(){
     this.isToggleModalNewCollaborator = false
   }
@@ -74,7 +60,6 @@ export class ColaboradoresComponent  {
     this.context.idUser$.subscribe((user: any) =>{
       if(user){
         this.apiService.getCollaborator(user).subscribe((res: any) => {
-            console.log(res)
             this.colaborators = res;
         })
       }

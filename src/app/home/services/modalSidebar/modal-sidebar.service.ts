@@ -9,10 +9,10 @@ export class ModalSidebarService {
   private modalLogin = new BehaviorSubject<boolean>(false);
   modalLogin$ = this.modalLogin.asObservable();
   toggleModal(modalValue: boolean) {
+    console.log(modalValue)
     this.modalLogin.next(modalValue);
   }
   getValueModal(): boolean {
-    console.log(this.modalLogin.getValue())
    return this.modalLogin.getValue()
   }
 }

@@ -8,6 +8,7 @@ import { ApiService } from '../../../services/serviceApi/api.service';
 import { HeaderComponent } from '../../../auth/component/header/header.component';
 import { LoadingService } from 'src/app/services/loading.service';
 import { AutoLoginService } from '../../../services/auto-login/auto-login.service';
+import { LoginService } from '../../service/login/login.service';
 
 @Component({
   selector: 'app-advance-login',
@@ -18,7 +19,7 @@ import { AutoLoginService } from '../../../services/auto-login/auto-login.servic
 
 
 })
-export class AdvanceLoginComponent implements OnInit, OnDestroy {
+export class AdvanceLoginComponent implements OnInit {
   cnpj: string = '';
   senha: string = '';
   senhaConfirm: string = '';
@@ -26,11 +27,8 @@ export class AdvanceLoginComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   buttonDisabled: boolean = false;
   userCreate: boolean = false
-  constructor(private themeService: ThemeService,private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService) {
-    const prefersTheme = localStorage.getItem('theme');
-    if (prefersTheme === 'dark') {
-      this.isToggleChangeTheme = true
-    }
+  constructor(private themeService: ThemeService,private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService, private loginService: LoginService) {
+
   }
   ngOnInit(): void {
     const prefersTheme = localStorage.getItem('theme');
@@ -38,9 +36,7 @@ export class AdvanceLoginComponent implements OnInit, OnDestroy {
       this.isToggleChangeTheme = true
     }
   }
-  ngOnDestroy(): void {
 
-  }
   isToggleChangeTheme: boolean = false;
   isClickChangeTheme() {
     this.isToggleChangeTheme = !this.isToggleChangeTheme
@@ -94,7 +90,12 @@ export class AdvanceLoginComponent implements OnInit, OnDestroy {
                data.subscribe((data: any) => {
                  if(data.token){
                    localStorage.setItem('token', JSON.stringify(data.token));
-                   this.autoLoginService.autoLogin(true, false);
+                          this.loadingService.show();
+          localStorage.setItem('token', JSON.stringify(data.token));
+          setInterval(() => {
+             this.loginService.authenticateToken();
+             this.loadingService.hide();
+          }, 2000);
                  }
                }, (error: any) => {
         

@@ -14,7 +14,6 @@ export class ThemeService {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     // Verificando se já existe uma preferência salva
     const storedPrefereinces = localStorage.getItem('theme');
-    console.log(prefersDark.matches)
     // Se não existir uma preferência salva, irá pegar uma preferência do sistema operacional
     if (!storedPrefereinces) {
       if (prefersDark.matches) {
@@ -37,7 +36,6 @@ export class ThemeService {
   }
 
   toggleDarkMode(isDark: boolean) {
-    console.log(isDark)
     this.isDarkMode.next(isDark);
     if (isDark) {
       document.body.classList.add('dark-mode');
