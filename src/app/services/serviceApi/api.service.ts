@@ -7,14 +7,11 @@ import { UserData } from 'src/app/interfaces/dataUser';
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
-   urlBaseAuth = 'http://localhost:4000/auth'
+   urlBaseAuth = 'https://hrconnect-api-dgzf.onrender.com/auth'
 
      async createUser(user: DataAvance) {
     return  this.http.post<DataAvance>(`${this.urlBaseAuth}/registerCompany`, user);
   }
-  // teste(){
-  //   return this.http.get(`localhost:4000/`)
-  // }
     verificEmailExist(email: string): any{
     return this.http.post(`${this.urlBaseAuth}/existEmail`,{email});
    }
@@ -30,7 +27,7 @@ export class ApiService {
   }
 
 
-  urlBaseHome = 'http://localhost:4000/home'
+  urlBaseHome = 'https://hrconnect-api-dgzf.onrender.com/home'
    async getCompany(id: string) {
     return  this.http.get(`${this.urlBaseHome}/company/${id}`);
   }
