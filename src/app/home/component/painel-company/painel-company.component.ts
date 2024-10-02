@@ -7,7 +7,6 @@ import { UserData } from 'src/app/interfaces/dataUser';
 import { ModalSidebarService } from '../../services/modalSidebar/modal-sidebar.service';
 import { ContextService } from 'src/app/services/context/context.service';
 import { ApiService } from 'src/app/services/serviceApi/api.service';
-import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 import {Router} from '@angular/router'
 import { ModalColaboradoresService } from '../../services/modalColaboradores/modal-colaboradores.service';
 @Component({
@@ -18,7 +17,7 @@ import { ModalColaboradoresService } from '../../services/modalColaboradores/mod
   imports: [CommonModule, ModalComponent]
 })
 export class PainelCompanyComponent {
-constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private autoLogionService: AutoLoginService, private router:Router, private modalColaboradoresService: ModalColaboradoresService) {
+constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private router:Router, private modalColaboradoresService: ModalColaboradoresService) {
     themeService.isDarkMode$.subscribe((isDark: any) => {
       this.isToggleChangeTheme = isDark
     })

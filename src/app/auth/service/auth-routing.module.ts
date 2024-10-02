@@ -4,14 +4,13 @@ import { AccountCreateComponent } from '../component/account-create/account-crea
 import { AcountAcessComponent } from '../component/acount-acess/acount-acess.component';
 import { AdvanceLoginComponent } from '../component/advance-login/advance-login.component';
 import { advanceLoginGuard } from './guard/advance-login.guard';
-import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 
 const routes: Routes = [
   { path: 'registrar', component: AccountCreateComponent },
   { path: 'registrar/advance', component: AdvanceLoginComponent, canActivate: [advanceLoginGuard] },
   { path: 'entrar', component: AcountAcessComponent },
-  // { path: '', redirectTo: '/registrar', pathMatch: 'full' },
-  // { path: '**', redirectTo: '/registrar' }
+  { path: '', redirectTo: '/registrar', pathMatch: 'full' },
+  { path: '**', redirectTo: '/registrar' }
 ];
 
 @NgModule({

@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../../../services/serviceApi/api.service';
 import { LoadingService } from 'src/app/services/loading.service';
-import { AutoLoginService } from '../../../services/auto-login/auto-login.service';
 import { LoginService } from '../../service/login/login.service';
 @Component({
   selector: 'app-acount-acess',
@@ -23,7 +22,7 @@ export class AcountAcessComponent  {
   errorMessage: string = '';
   toggleButtonVisiblePassword: boolean = false;
  
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService, private loginService: LoginService) {} 
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private loginService: LoginService) {} 
   
    ngOnInit(): void {
     const prefersTheme = localStorage.getItem('theme');

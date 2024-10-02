@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../../services/serviceApi/api.service';
 import { HeaderComponent } from '../../../auth/component/header/header.component';
 import { LoadingService } from 'src/app/services/loading.service';
-import { AutoLoginService } from '../../../services/auto-login/auto-login.service';
 import { LoginService } from '../../service/login/login.service';
 
 @Component({
@@ -27,7 +26,7 @@ export class AdvanceLoginComponent implements OnInit {
   errorMessage: string = '';
   buttonDisabled: boolean = false;
   userCreate: boolean = false
-  constructor(private themeService: ThemeService,private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private autoLoginService: AutoLoginService, private loginService: LoginService) {
+  constructor(private themeService: ThemeService,private context: ContextService, private router: Router, private apiService: ApiService, private loadingService: LoadingService, private loginService: LoginService) {
 
   }
   ngOnInit(): void {

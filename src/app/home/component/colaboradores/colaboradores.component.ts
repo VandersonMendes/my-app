@@ -5,7 +5,6 @@ import { Employees } from 'src/app/interfaces/employees';
 import { ModalSidebarService } from '../../services/modalSidebar/modal-sidebar.service';
 import { ContextService } from 'src/app/services/context/context.service';
 import { ApiService } from 'src/app/services/serviceApi/api.service';
-import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 import { ModalColaboradoresComponent } from './modal-colaboradores/modal-colaboradores.component';
 import { ModalColaboradoresService } from '../../services/modalColaboradores/modal-colaboradores.service';
 
@@ -22,7 +21,7 @@ export class ColaboradoresComponent  {
   isToggleModalNewCollaborator: boolean = false;
   isToggleChangeTheme: boolean = false;
   colaborators: Employees[]= [];
-  constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private autoLogionService: AutoLoginService, private modalColaboradoresService: ModalColaboradoresService) {
+  constructor(private themeService: ThemeService, private modalSidebar: ModalSidebarService, private context: ContextService, private apiService: ApiService, private modalColaboradoresService: ModalColaboradoresService) {
   
   }
   ngOnInit(): void {

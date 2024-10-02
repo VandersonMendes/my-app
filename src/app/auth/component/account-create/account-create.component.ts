@@ -7,7 +7,6 @@ import { ContextService } from '../../../services/context/context.service';
 import { ValidationDataService } from 'src/app/services/validation-data.service';
 import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../../../services/serviceApi/api.service';
-import { AutoLoginService } from 'src/app/services/auto-login/auto-login.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { LoginService } from '../../service/login/login.service';
 @Component({
@@ -23,7 +22,7 @@ export class AccountCreateComponent implements OnInit {
   company: string = '';
   errorForm: boolean = false;
   errorMessage: string = '';
-  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService, private autoLoginService: AutoLoginService, private loadingService: LoadingService, private loginService: LoginService) {
+  constructor(private themeService: ThemeService, private context: ContextService, private router: Router, private validationService: ValidationDataService, private apiService: ApiService, private loadingService: LoadingService, private loginService: LoginService) {
 
   }
   ngOnInit() {
