@@ -26,7 +26,6 @@ export class AccountCreateComponent implements OnInit {
 
   }
   ngOnInit() {
-    // this.autoLoginService.autoLogin(true, true);
     const prefersTheme = localStorage.getItem('theme');
     if (prefersTheme === 'dark') {
       sessionStorage.removeItem('dateLogin');
@@ -52,7 +51,6 @@ export class AccountCreateComponent implements OnInit {
     } else {
       this.errorForm = false
     }
-    // this.router.navigate(['/entrar'], { queryParams: { name: this.name, email: this.email, company: this.company } });
     this.apiService.verificEmailExist(this.email).subscribe((data: any) => {
     }, (error: any) => {
       this.errorMessage = error.error.message

@@ -57,8 +57,6 @@ export class AdvanceLoginComponent implements OnInit {
     this.cnpj = formattedValue;
 
   }
-
-
   onSubmit(event: Event) {
     event.preventDefault();
     if (this.cnpj.length === 0 || this.senha.length === 0 || this.senhaConfirm.length === 0) {
