@@ -7,7 +7,7 @@ import { UserData } from 'src/app/interfaces/dataUser';
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
-   urlBaseAuth = 'https://hrconnect-api-dgzf.onrender.com/auth'
+   urlBaseAuth = 'http://localhost:4000/auth'
 
      async createUser(user: DataAvance) {
     return  this.http.post<DataAvance>(`${this.urlBaseAuth}/registerCompany`, user);
@@ -27,7 +27,7 @@ export class ApiService {
   }
 
 
-  urlBaseHome = 'https://hrconnect-api-dgzf.onrender.com/home'
+  urlBaseHome = 'http://localhost:4000/home'
    async getCompany(id: string) {
     return  this.http.get(`${this.urlBaseHome}/company/${id}`);
   }

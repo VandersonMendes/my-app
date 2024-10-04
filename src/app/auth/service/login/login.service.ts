@@ -13,34 +13,31 @@ export class LoginService {
   constructor(private apiService: ApiService, private router: Router) { }
 
   authenticateToken(){
-  let returnValue = false
   const token = localStorage.getItem('token');
-  if (!token) {
-    returnValue = false
-  }else{
+  if (token) {
     this.apiService.validate_token(token).then(data => {
       if(data){
         try{
         data.subscribe((dataV: any) => {
            if(dataV.error){
             localStorage.removeItem('token');
+                this.router.navigate(['/registrar']);
             console.log('Error validating token', dataV.error);
-            returnValue = false
+
            }
-
-           this.router.navigate(['/colaboradores']);
-
+           this.router.navigate(['/company']);
         })
         
         }catch(err){
           localStorage.removeItem('token');
+              this.router.navigate(['/registrar']);
           console.log('Error validating token', err);
-          // returnValue = false
         }
+      }else{
+        localStorage.removeItem('token');
+            this.router.navigate(['/registrar']);
       }
     })
   }
-
-  // return returnValue
   }
 }

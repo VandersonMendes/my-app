@@ -51,7 +51,6 @@ a {
 }
 
 @media (max-height: 600px) {
-
   .sideBar {
     display: none;
   }
@@ -60,7 +59,7 @@ a {
     padding: 50px;
         border: 0.1px solid #4067af71;
     border-radius: 10px;
-      box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
+      box-shadow: 1px 2px 31px -6px rgba(6, 88, 246, 0.82);
   -webkit-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
   -moz-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
   }
@@ -83,8 +82,6 @@ a {
     position: fixed;
     top: 0;
     left: 0;
-    // width: 100%;
-    // height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,8 +108,6 @@ a {
     position: fixed;
     top: 10vh;
     left: -15px;
-    // width: 100%;
-    // height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,22 +117,16 @@ a {
     cursor: pointer;
   }
     .containerSideBarResponsiveLigth {
-    background-color: #ffff !important;
-    padding: 30px;
+    padding: 0 15px;
         border: 0.1px solid #4067af71;
-    border-radius: 10px;
-  //     box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
-  // -webkit-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
-  // -moz-box-shadow: 1px 2px 51px -6px rgba(6, 88, 246, 0.82);
+            border-radius: 10px;
+
   }
   .containerSideBarResponsiveDark {
     background-color: var(--color-bg-secondary) !important;
-    padding: 30px;
+    padding: 0 15px;
     border: 0.4px solid #4067af48;
     border-radius: 10px;
-    // box-shadow: 1px 2px 51px -6px #14bf916e;
-    // -webkit-box-shadow: 1px 2px 51px -6px #14bf9171;
-    // -moz-box-shadow: 1px 2px 51px -6px #14bf9175;
   }
   .iconResponsive {
     display: block;
@@ -152,4 +141,9 @@ a {
   .menu-icon {
  display: block
 }
+}
+@media (max-width: 500px) {
+    .iconResp, .iconTheme{
+    width: 1.2rem;
+  }
 }
